@@ -2,7 +2,7 @@
 version: '3.8'
 services:
   authtest-app:
-    image: authtest
+    image: authtest:0.0.1-SNAPSHOT
     environment:
       - _JAVA_OPTIONS=-Xmx512m -Xms256m
       - SPRING_PROFILES_ACTIVE=prod,api-docs
@@ -42,7 +42,7 @@ services:
       - KC_HTTP_PORT=9080
       - KC_HTTPS_PORT=9443
     # If you want to expose these ports outside your dev PC,
-    # remove the "127.0.0.1:" prefix
+    # remove the "" prefix
     ports:
       - 127.0.0.1:9080:9080
       - 127.0.0.1:9443:9443

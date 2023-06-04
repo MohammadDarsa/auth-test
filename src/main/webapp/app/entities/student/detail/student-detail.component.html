@@ -1,0 +1,76 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="student">
+      <h2 data-cy="studentDetailsHeading"><span jhiTranslate="authtestApp.student.detail.title">Student</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ student.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="authtestApp.student.email">Email</span></dt>
+        <dd>
+          <span>{{ student.email }}</span>
+        </dd>
+        <dt><span jhiTranslate="authtestApp.student.name">Name</span></dt>
+        <dd>
+          <span>{{ student.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="authtestApp.student.gender">Gender</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'authtestApp.Gender.' + student.gender }}">{{ student.gender }}</span>
+        </dd>
+        <dt><span jhiTranslate="authtestApp.student.major">Major</span></dt>
+        <dd>
+          <span>{{ student.major }}</span>
+        </dd>
+        <dt><span jhiTranslate="authtestApp.student.year">Year</span></dt>
+        <dd>
+          <span>{{ student.year }}</span>
+        </dd>
+        <dt><span jhiTranslate="authtestApp.student.nameAr">Name Ar</span></dt>
+        <dd>
+          <span>{{ student.nameAr }}</span>
+        </dd>
+        <dt><span jhiTranslate="authtestApp.student.placeOfBirthEn">Place Of Birth En</span></dt>
+        <dd>
+          <span>{{ student.placeOfBirthEn }}</span>
+        </dd>
+        <dt><span jhiTranslate="authtestApp.student.placeOfBirthAr">Place Of Birth Ar</span></dt>
+        <dd>
+          <span>{{ student.placeOfBirthAr }}</span>
+        </dd>
+        <dt><span jhiTranslate="authtestApp.student.dateOfBirthEn">Date Of Birth En</span></dt>
+        <dd>
+          <span>{{ student.dateOfBirthEn }}</span>
+        </dd>
+        <dt><span jhiTranslate="authtestApp.student.dateOfBirthAr">Date Of Birth Ar</span></dt>
+        <dd>
+          <span>{{ student.dateOfBirthAr }}</span>
+        </dd>
+        <dt><span jhiTranslate="authtestApp.student.nationality">Nationality</span></dt>
+        <dd>
+          <span>{{ student.nationality }}</span>
+        </dd>
+        <dt><span jhiTranslate="authtestApp.student.phone">Phone</span></dt>
+        <dd>
+          <span>{{ student.phone }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/student', student.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

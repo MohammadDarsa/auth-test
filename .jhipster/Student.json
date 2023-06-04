@@ -1,0 +1,72 @@
+{
+  "applications": "*",
+  "changelogDate": "20230603164754",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "student",
+  "fields": [
+    {
+      "fieldName": "email",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "gender",
+      "fieldType": "Gender",
+      "fieldValues": "MALE (male),FEMALE (female)"
+    },
+    {
+      "fieldName": "major",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "year",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "nameAr",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "placeOfBirthEn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "placeOfBirthAr",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateOfBirthEn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateOfBirthAr",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nationality",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "phone",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Student",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "transcript",
+      "otherEntityRelationshipName": "student",
+      "relationshipName": "transcript",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

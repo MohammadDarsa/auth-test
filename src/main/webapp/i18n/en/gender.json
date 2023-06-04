@@ -1,0 +1,9 @@
+{
+  "authtestApp": {
+    "Gender": {
+      "null": "",
+      "MALE": "male",
+      "FEMALE": "female"
+    }
+  }
+}

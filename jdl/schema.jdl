@@ -1,0 +1,34 @@
+enum Gender {
+    MALE(male),
+    FEMALE(female)
+}
+
+entity Student(student) {
+    email String
+    name String
+    gender Gender
+    major String
+    year Long
+    nameAr String
+    placeOfBirthEn String
+    placeOfBirthAr String
+    dateOfBirthEn String
+    dateOfBirthAr String
+    nationality String
+    phone String
+}
+
+entity Transcript(transcript) {
+    language String
+    year Long
+    status String
+    comment String
+    date LocalDate
+}
+
+relationship OneToMany {
+    Student to Transcript
+}
+
+dto * with mapstruct
+service * with serviceClass

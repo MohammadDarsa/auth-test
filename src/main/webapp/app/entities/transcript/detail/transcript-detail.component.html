@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="transcript">
+      <h2 data-cy="transcriptDetailsHeading"><span jhiTranslate="authtestApp.transcript.detail.title">Transcript</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ transcript.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="authtestApp.transcript.language">Language</span></dt>
+        <dd>
+          <span>{{ transcript.language }}</span>
+        </dd>
+        <dt><span jhiTranslate="authtestApp.transcript.year">Year</span></dt>
+        <dd>
+          <span>{{ transcript.year }}</span>
+        </dd>
+        <dt><span jhiTranslate="authtestApp.transcript.status">Status</span></dt>
+        <dd>
+          <span>{{ transcript.status }}</span>
+        </dd>
+        <dt><span jhiTranslate="authtestApp.transcript.comment">Comment</span></dt>
+        <dd>
+          <span>{{ transcript.comment }}</span>
+        </dd>
+        <dt><span jhiTranslate="authtestApp.transcript.date">Date</span></dt>
+        <dd>
+          <span>{{ transcript.date | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="authtestApp.transcript.student">Student</span></dt>
+        <dd>
+          <div *ngIf="transcript.student">
+            <a [routerLink]="['/student', transcript.student.id, 'view']">{{ transcript.student.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/transcript', transcript.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>
