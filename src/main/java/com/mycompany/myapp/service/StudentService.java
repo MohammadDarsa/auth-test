@@ -136,6 +136,22 @@ public class StudentService {
     public Optional<StudentDTO> updateLoggedInStudent(StudentDTO studentDTO) {
         User user = userService.getCurrentUser().orElseThrow(() -> new RuntimeException("User not logged in"));
         studentDTO.setEmail(user.getEmail());
+        this.update(studentDTO);
         return Optional.of(studentDTO);
+    }
+
+    //add student
+    public StudentDTO addStudent(StudentDTO studentDto) {
+        Optional<Student> student = studentRepository.findByEmail(studentDto.getEmail());
+        Student s;
+        if (student.isPresent()) {
+            s = student.get();
+            if (!s.getStudentId().equals(studentDto.getStudentId())) return null;
+            s.setMajor(studentDto.getMajor());
+            s.setYear(studentDto.getYear());
+        } else s = studentMapper.toEntity(studentDto);
+        studentRepository.save(s);
+        studentDto.setId(s.getId());
+        return studentDto;
     }
 }

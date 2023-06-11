@@ -1,19 +1,26 @@
 package com.mycompany.myapp.web.rest;
 
+import com.mycompany.myapp.domain.enumeration.Gender;
 import com.mycompany.myapp.repository.StudentRepository;
 import com.mycompany.myapp.service.StudentService;
 import com.mycompany.myapp.service.dto.StudentDTO;
 import com.mycompany.myapp.web.rest.errors.BadRequestAlertException;
+import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.ResponseUtil;
 
@@ -196,5 +203,28 @@ public class StudentResource {
             result,
             HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, studentDTO.getId().toString())
         );
+    }
+
+    @PostMapping("/students/import")
+    public List<StudentDTO> mapReapExcelDataToDB(@RequestParam("file") MultipartFile reapExcelDataFile) throws IOException {
+        List<StudentDTO> tempStudentList = new ArrayList<StudentDTO>();
+        XSSFWorkbook workbook = new XSSFWorkbook(reapExcelDataFile.getInputStream());
+        XSSFSheet worksheet;
+        worksheet = workbook.getSheetAt(0);
+        for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
+            StudentDTO tempStudent = new StudentDTO();
+
+            XSSFRow row = worksheet.getRow(i);
+
+            tempStudent.setStudentId((long) row.getCell(0).getNumericCellValue());
+            tempStudent.setEmail(row.getCell(1).getStringCellValue());
+            tempStudent.setName(row.getCell(2).getStringCellValue());
+            tempStudent.setGender(Gender.valueOf(row.getCell(3).getStringCellValue()));
+            tempStudent.setMajor(row.getCell(4).getStringCellValue());
+            tempStudent.setYear((long) row.getCell(5).getNumericCellValue());
+            tempStudent.setNationality(row.getCell(6).getStringCellValue());
+            tempStudentList.add(studentService.save(tempStudent));
+        }
+        return tempStudentList;
     }
 }
