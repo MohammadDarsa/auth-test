@@ -4,6 +4,7 @@ enum Gender {
 }
 
 entity Student(student) {
+    studentId Long
     email String
     name String
     gender Gender

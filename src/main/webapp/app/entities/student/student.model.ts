@@ -2,6 +2,7 @@ import { Gender } from 'app/entities/enumerations/gender.model';
 
 export interface IStudent {
   id: number;
+  studentId?: number | null;
   email?: string | null;
   name?: string | null;
   gender?: Gender | null;

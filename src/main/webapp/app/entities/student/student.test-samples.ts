@@ -7,29 +7,31 @@ export const sampleWithRequiredData: IStudent = {
 };
 
 export const sampleWithPartialData: IStudent = {
-  id: 88178,
-  email: 'Leora33@yahoo.com',
-  name: 'transmit',
-  major: 'hard Home',
-  year: 75764,
-  placeOfBirthAr: 'deploy of',
-  nationality: 'auxiliary Tools Savings',
+  id: 35405,
+  studentId: 61242,
+  email: 'Aletha76@hotmail.com',
+  gender: Gender['FEMALE'],
+  major: 'synergistic orchid ivory',
+  placeOfBirthEn: 'Path e-markets',
+  dateOfBirthAr: 'Baby B2C Shirt',
+  phone: '1-723-381-2981 x662',
 };
 
 export const sampleWithFullData: IStudent = {
-  id: 5470,
-  email: 'Magali17@yahoo.com',
-  name: 'Ball GB Money',
+  id: 3024,
+  studentId: 28894,
+  email: 'Heloise_Ryan@yahoo.com',
+  name: 'Nuevo Direct',
   gender: Gender['MALE'],
-  major: 'users indexing',
-  year: 62785,
-  nameAr: 'Direct Clothing',
-  placeOfBirthEn: 'impactful primary Kids',
-  placeOfBirthAr: 'Synergized seamless Jewelery',
-  dateOfBirthEn: 'navigate Handmade',
-  dateOfBirthAr: 'Dinar magenta overriding',
-  nationality: 'magenta',
-  phone: '1-976-812-9538',
+  major: 'Developer state Awesome',
+  year: 59739,
+  nameAr: 'compress',
+  placeOfBirthEn: 'seamless',
+  placeOfBirthAr: 'wireless',
+  dateOfBirthEn: 'cutting-edge bypass Dinar',
+  dateOfBirthAr: 'Franc',
+  nationality: 'hack',
+  phone: '(919) 868-1295 x3867',
 };
 
 export const sampleWithNewData: NewStudent = {

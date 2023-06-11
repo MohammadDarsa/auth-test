@@ -6,8 +6,6 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -28,8 +26,6 @@ public class Student implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Getter
-    @Setter
     @Column(name = "student_id")
     private Long studentId;
 
@@ -88,6 +84,19 @@ public class Student implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getStudentId() {
+        return this.studentId;
+    }
+
+    public Student studentId(Long studentId) {
+        this.setStudentId(studentId);
+        return this;
+    }
+
+    public void setStudentId(Long studentId) {
+        this.studentId = studentId;
     }
 
     public String getEmail() {
@@ -301,6 +310,7 @@ public class Student implements Serializable {
     public String toString() {
         return "Student{" +
             "id=" + getId() +
+            ", studentId=" + getStudentId() +
             ", email='" + getEmail() + "'" +
             ", name='" + getName() + "'" +
             ", gender='" + getGender() + "'" +

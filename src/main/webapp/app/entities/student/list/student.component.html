@@ -38,6 +38,12 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
+          <th scope="col" jhiSortBy="studentId">
+            <div class="d-flex">
+              <span jhiTranslate="authtestApp.student.studentId">Student Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
           <th scope="col" jhiSortBy="email">
             <div class="d-flex">
               <span jhiTranslate="authtestApp.student.email">Email</span>
@@ -118,6 +124,7 @@
           <td>
             <a [routerLink]="['/student', student.id, 'view']">{{ student.id }}</a>
           </td>
+          <td>{{ student.studentId }}</td>
           <td>{{ student.email }}</td>
           <td>{{ student.name }}</td>
           <td jhiTranslate="{{ 'authtestApp.Gender.' + student.gender }}">{{ student.gender }}</td>

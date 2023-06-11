@@ -18,6 +18,7 @@
         "title": "Student"
       },
       "id": "ID",
+      "studentId": "Student Id",
       "email": "Email",
       "name": "Name",
       "gender": "Gender",

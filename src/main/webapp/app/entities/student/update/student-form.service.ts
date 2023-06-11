@@ -18,6 +18,7 @@ type StudentFormDefaults = Pick<NewStudent, 'id'>;
 
 type StudentFormGroupContent = {
   id: FormControl<IStudent['id'] | NewStudent['id']>;
+  studentId: FormControl<IStudent['studentId']>;
   email: FormControl<IStudent['email']>;
   name: FormControl<IStudent['name']>;
   gender: FormControl<IStudent['gender']>;
@@ -49,6 +50,7 @@ export class StudentFormService {
           validators: [Validators.required],
         }
       ),
+      studentId: new FormControl(studentRawValue.studentId),
       email: new FormControl(studentRawValue.email),
       name: new FormControl(studentRawValue.name),
       gender: new FormControl(studentRawValue.gender),

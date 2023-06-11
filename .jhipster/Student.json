@@ -6,6 +6,10 @@
   "entityTableName": "student",
   "fields": [
     {
+      "fieldName": "studentId",
+      "fieldType": "Long"
+    },
+    {
       "fieldName": "email",
       "fieldType": "String"
     },

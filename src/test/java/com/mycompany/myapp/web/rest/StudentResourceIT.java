@@ -33,6 +33,9 @@ import org.springframework.transaction.annotation.Transactional;
 @WithMockUser
 class StudentResourceIT {
 
+    private static final Long DEFAULT_STUDENT_ID = 1L;
+    private static final Long UPDATED_STUDENT_ID = 2L;
+
     private static final String DEFAULT_EMAIL = "AAAAAAAAAA";
     private static final String UPDATED_EMAIL = "BBBBBBBBBB";
 
@@ -97,6 +100,7 @@ class StudentResourceIT {
      */
     public static Student createEntity(EntityManager em) {
         Student student = new Student()
+            .studentId(DEFAULT_STUDENT_ID)
             .email(DEFAULT_EMAIL)
             .name(DEFAULT_NAME)
             .gender(DEFAULT_GENDER)
@@ -120,6 +124,7 @@ class StudentResourceIT {
      */
     public static Student createUpdatedEntity(EntityManager em) {
         Student student = new Student()
+            .studentId(UPDATED_STUDENT_ID)
             .email(UPDATED_EMAIL)
             .name(UPDATED_NAME)
             .gender(UPDATED_GENDER)
@@ -159,6 +164,7 @@ class StudentResourceIT {
         List<Student> studentList = studentRepository.findAll();
         assertThat(studentList).hasSize(databaseSizeBeforeCreate + 1);
         Student testStudent = studentList.get(studentList.size() - 1);
+        assertThat(testStudent.getStudentId()).isEqualTo(DEFAULT_STUDENT_ID);
         assertThat(testStudent.getEmail()).isEqualTo(DEFAULT_EMAIL);
         assertThat(testStudent.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testStudent.getGender()).isEqualTo(DEFAULT_GENDER);
@@ -209,6 +215,7 @@ class StudentResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(student.getId().intValue())))
+            .andExpect(jsonPath("$.[*].studentId").value(hasItem(DEFAULT_STUDENT_ID.intValue())))
             .andExpect(jsonPath("$.[*].email").value(hasItem(DEFAULT_EMAIL)))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)))
             .andExpect(jsonPath("$.[*].gender").value(hasItem(DEFAULT_GENDER.toString())))
@@ -235,6 +242,7 @@ class StudentResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(student.getId().intValue()))
+            .andExpect(jsonPath("$.studentId").value(DEFAULT_STUDENT_ID.intValue()))
             .andExpect(jsonPath("$.email").value(DEFAULT_EMAIL))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME))
             .andExpect(jsonPath("$.gender").value(DEFAULT_GENDER.toString()))
@@ -269,6 +277,7 @@ class StudentResourceIT {
         // Disconnect from session so that the updates on updatedStudent are not directly saved in db
         em.detach(updatedStudent);
         updatedStudent
+            .studentId(UPDATED_STUDENT_ID)
             .email(UPDATED_EMAIL)
             .name(UPDATED_NAME)
             .gender(UPDATED_GENDER)
@@ -296,6 +305,7 @@ class StudentResourceIT {
         List<Student> studentList = studentRepository.findAll();
         assertThat(studentList).hasSize(databaseSizeBeforeUpdate);
         Student testStudent = studentList.get(studentList.size() - 1);
+        assertThat(testStudent.getStudentId()).isEqualTo(UPDATED_STUDENT_ID);
         assertThat(testStudent.getEmail()).isEqualTo(UPDATED_EMAIL);
         assertThat(testStudent.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testStudent.getGender()).isEqualTo(UPDATED_GENDER);
@@ -395,10 +405,11 @@ class StudentResourceIT {
         partialUpdatedStudent.setId(student.getId());
 
         partialUpdatedStudent
+            .name(UPDATED_NAME)
             .gender(UPDATED_GENDER)
             .major(UPDATED_MAJOR)
-            .year(UPDATED_YEAR)
-            .dateOfBirthEn(UPDATED_DATE_OF_BIRTH_EN)
+            .placeOfBirthAr(UPDATED_PLACE_OF_BIRTH_AR)
+            .nationality(UPDATED_NATIONALITY)
             .phone(UPDATED_PHONE);
 
         restStudentMockMvc
@@ -414,17 +425,18 @@ class StudentResourceIT {
         List<Student> studentList = studentRepository.findAll();
         assertThat(studentList).hasSize(databaseSizeBeforeUpdate);
         Student testStudent = studentList.get(studentList.size() - 1);
+        assertThat(testStudent.getStudentId()).isEqualTo(DEFAULT_STUDENT_ID);
         assertThat(testStudent.getEmail()).isEqualTo(DEFAULT_EMAIL);
-        assertThat(testStudent.getName()).isEqualTo(DEFAULT_NAME);
+        assertThat(testStudent.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testStudent.getGender()).isEqualTo(UPDATED_GENDER);
         assertThat(testStudent.getMajor()).isEqualTo(UPDATED_MAJOR);
-        assertThat(testStudent.getYear()).isEqualTo(UPDATED_YEAR);
+        assertThat(testStudent.getYear()).isEqualTo(DEFAULT_YEAR);
         assertThat(testStudent.getNameAr()).isEqualTo(DEFAULT_NAME_AR);
         assertThat(testStudent.getPlaceOfBirthEn()).isEqualTo(DEFAULT_PLACE_OF_BIRTH_EN);
-        assertThat(testStudent.getPlaceOfBirthAr()).isEqualTo(DEFAULT_PLACE_OF_BIRTH_AR);
-        assertThat(testStudent.getDateOfBirthEn()).isEqualTo(UPDATED_DATE_OF_BIRTH_EN);
+        assertThat(testStudent.getPlaceOfBirthAr()).isEqualTo(UPDATED_PLACE_OF_BIRTH_AR);
+        assertThat(testStudent.getDateOfBirthEn()).isEqualTo(DEFAULT_DATE_OF_BIRTH_EN);
         assertThat(testStudent.getDateOfBirthAr()).isEqualTo(DEFAULT_DATE_OF_BIRTH_AR);
-        assertThat(testStudent.getNationality()).isEqualTo(DEFAULT_NATIONALITY);
+        assertThat(testStudent.getNationality()).isEqualTo(UPDATED_NATIONALITY);
         assertThat(testStudent.getPhone()).isEqualTo(UPDATED_PHONE);
     }
 
@@ -441,6 +453,7 @@ class StudentResourceIT {
         partialUpdatedStudent.setId(student.getId());
 
         partialUpdatedStudent
+            .studentId(UPDATED_STUDENT_ID)
             .email(UPDATED_EMAIL)
             .name(UPDATED_NAME)
             .gender(UPDATED_GENDER)
@@ -467,6 +480,7 @@ class StudentResourceIT {
         List<Student> studentList = studentRepository.findAll();
         assertThat(studentList).hasSize(databaseSizeBeforeUpdate);
         Student testStudent = studentList.get(studentList.size() - 1);
+        assertThat(testStudent.getStudentId()).isEqualTo(UPDATED_STUDENT_ID);
         assertThat(testStudent.getEmail()).isEqualTo(UPDATED_EMAIL);
         assertThat(testStudent.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testStudent.getGender()).isEqualTo(UPDATED_GENDER);
