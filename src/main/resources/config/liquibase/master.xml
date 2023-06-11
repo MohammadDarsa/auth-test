@@ -17,4 +17,37 @@
     <include file="config/liquibase/changelog/20230603164755_added_entity_constraints_Transcript.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
+    <changeSet author="Administrator (generated)" id="1686490028985-1">
+        <dropForeignKeyConstraint baseTableName="jhi_user_authority" constraintName="fk_authority_name"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1686490028985-2">
+        <dropForeignKeyConstraint baseTableName="transcript" constraintName="fk_transcript__student_id"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1686490028985-3">
+        <dropForeignKeyConstraint baseTableName="jhi_user_authority" constraintName="fk_user_id"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1686490028985-4">
+        <dropUniqueConstraint constraintName="ux_user_email" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1686490028985-5">
+        <dropUniqueConstraint constraintName="ux_user_login" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1686490028985-6">
+        <dropTable tableName="jhi_authority"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1686490028985-7">
+        <dropTable tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1686490028985-8">
+        <dropTable tableName="jhi_user_authority"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1686490028985-9">
+        <dropTable tableName="student"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1686490028985-10">
+        <dropTable tableName="transcript"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1686490028985-11">
+        <dropSequence sequenceName="sequence_generator"/>
+    </changeSet>
 </databaseChangeLog>
