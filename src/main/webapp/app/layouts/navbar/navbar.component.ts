@@ -24,6 +24,28 @@ export class NavbarComponent implements OnInit {
   version = '';
   account: Account | null = null;
   entitiesNavbarItems: any[] = [];
+  entityOptions: any[] = [
+    { label: 'Student', value: 'student' },
+    { label: 'Transcript', value: 'transcript' },
+  ];
+
+  adminOptions: any[] = [
+    { label: 'Metrics', value: 'admin/metrics' },
+    { label: 'Health', value: 'admin/health' },
+    { label: 'Configuration', value: 'admin/configuration' },
+    { label: 'Logs', value: 'admin/logs' },
+  ];
+
+  languageOptions: any[] = [
+    { label: 'English', value: 'en' },
+    { label: 'French', value: 'fr' },
+    // Add more language options as needed
+  ];
+
+  accountOptions: any[] = [
+    { label: 'Sign out', value: 'logout' },
+    { label: 'Sign in', value: 'login' },
+  ];
 
   constructor(
     private loginService: LoginService,
