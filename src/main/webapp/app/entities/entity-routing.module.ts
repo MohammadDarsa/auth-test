@@ -4,11 +4,11 @@ import { RouterModule } from '@angular/router';
 @NgModule({
   imports: [
     RouterModule.forChild([
-      //       {
-      //         path: 'student',
-      //         data: { pageTitle: 'authtestApp.student.home.title' },
-      //         loadChildren: () => import('./student/student.module').then(m => m.StudentModule),
-      //       },
+      {
+        path: 'student',
+        data: { pageTitle: 'authtestApp.student.home.title' },
+        loadChildren: () => import('./student/student.module').then(m => m.StudentModule),
+      },
       {
         path: 'transcript',
         data: { pageTitle: 'authtestApp.transcript.home.title' },
