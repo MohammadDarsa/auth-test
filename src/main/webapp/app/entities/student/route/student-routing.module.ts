@@ -7,6 +7,7 @@ import { StudentDetailComponent } from '../detail/student-detail.component';
 import { StudentUpdateComponent } from '../update/student-update.component';
 import { StudentRoutingResolveService } from './student-routing-resolve.service';
 import { ASC } from 'app/config/navigation.constants';
+import { AuthStudentDetailComponent } from '../detail/auth-student-detail.component';
 
 const studentRoute: Routes = [
   {
@@ -36,6 +37,14 @@ const studentRoute: Routes = [
   {
     path: ':id/edit',
     component: StudentUpdateComponent,
+    resolve: {
+      student: StudentRoutingResolveService,
+    },
+    canActivate: [UserRouteAccessService],
+  },
+  {
+    path: 'profile',
+    component: AuthStudentDetailComponent,
     resolve: {
       student: StudentRoutingResolveService,
     },

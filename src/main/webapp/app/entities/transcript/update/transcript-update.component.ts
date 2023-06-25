@@ -17,7 +17,7 @@ import { StudentService } from 'app/entities/student/service/student.service';
 export class TranscriptUpdateComponent implements OnInit {
   isSaving = false;
   transcript: ITranscript | null = null;
-
+  student: IStudent | null = null;
   studentsSharedCollection: IStudent[] = [];
 
   editForm: TranscriptFormGroup = this.transcriptFormService.createTranscriptFormGroup();
@@ -39,6 +39,12 @@ export class TranscriptUpdateComponent implements OnInit {
       }
 
       this.loadRelationshipsOptions();
+    });
+    //get authenticated student
+    this.studentService.getAuthenticatedStudent().subscribe(student => {
+      this.student = student.body;
+      this.loadRelationshipsOptions();
+      console.log('student', this.student);
     });
   }
 

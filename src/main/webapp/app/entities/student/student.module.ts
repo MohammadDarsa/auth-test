@@ -5,9 +5,16 @@ import { StudentDetailComponent } from './detail/student-detail.component';
 import { StudentUpdateComponent } from './update/student-update.component';
 import { StudentDeleteDialogComponent } from './delete/student-delete-dialog.component';
 import { StudentRoutingModule } from './route/student-routing.module';
+import { AuthStudentDetailComponent } from './detail/auth-student-detail.component';
 
 @NgModule({
   imports: [SharedModule, StudentRoutingModule],
-  declarations: [StudentComponent, StudentDetailComponent, StudentUpdateComponent, StudentDeleteDialogComponent],
+  declarations: [
+    StudentComponent,
+    StudentDetailComponent,
+    StudentUpdateComponent,
+    StudentDeleteDialogComponent,
+    AuthStudentDetailComponent,
+  ],
 })
 export class StudentModule {}

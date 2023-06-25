@@ -8,42 +8,149 @@
       <div>
         <jhi-alert-error></jhi-alert-error>
 
-        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+        <div class="row mb-3" *jhiHasAnyAuthority="'ROLE_ADMIN'">
           <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
           <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
         </div>
 
         <div class="row mb-3">
           <label class="form-label" jhiTranslate="authtestApp.student.studentId" for="field_studentId">Student Id</label>
-          <input type="number" class="form-control" name="studentId" id="field_studentId" data-cy="studentId" formControlName="studentId" />
+          <input
+            type="number"
+            class="form-control"
+            name="studentId"
+            id="field_studentId"
+            data-cy="studentId"
+            formControlName="studentId"
+            *jhiHasAnyAuthority="'ROLE_ADMIN'"
+          />
+          <input
+            type="number"
+            class="form-control"
+            name="studentId"
+            id="field_studentId"
+            data-cy="studentId"
+            formControlName="studentId"
+            [readonly]="true"
+            *jhiHasAnyAuthority="'ROLE_USER'"
+          />
         </div>
 
         <div class="row mb-3">
           <label class="form-label" jhiTranslate="authtestApp.student.email" for="field_email">Email</label>
-          <input type="text" class="form-control" name="email" id="field_email" data-cy="email" formControlName="email" />
+          <input
+            type="text"
+            class="form-control"
+            name="email"
+            id="field_email"
+            data-cy="email"
+            formControlName="email"
+            *jhiHasAnyAuthority="'ROLE_ADMIN'"
+          />
+          <input
+            type="text"
+            class="form-control"
+            name="email"
+            id="field_email"
+            data-cy="email"
+            formControlName="email"
+            [readonly]="true"
+            *jhiHasAnyAuthority="'ROLE_USER'"
+          />
         </div>
 
         <div class="row mb-3">
           <label class="form-label" jhiTranslate="authtestApp.student.name" for="field_name">Name</label>
-          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+          <input
+            type="text"
+            class="form-control"
+            name="name"
+            id="field_name"
+            data-cy="name"
+            formControlName="name"
+            *jhiHasAnyAuthority="'ROLE_ADMIN'"
+          />
+          <input
+            type="text"
+            class="form-control"
+            name="name"
+            id="field_name"
+            data-cy="name"
+            formControlName="name"
+            [readonly]="true"
+            *jhiHasAnyAuthority="'ROLE_USER'"
+          />
         </div>
 
         <div class="row mb-3">
           <label class="form-label" jhiTranslate="authtestApp.student.gender" for="field_gender">Gender</label>
-          <select class="form-control" name="gender" formControlName="gender" id="field_gender" data-cy="gender">
+          <select
+            class="form-control"
+            name="gender"
+            formControlName="gender"
+            id="field_gender"
+            data-cy="gender"
+            *jhiHasAnyAuthority="'ROLE_ADMIN'"
+          >
             <option [ngValue]="null">{{ 'authtestApp.Gender.null' | translate }}</option>
             <option *ngFor="let gender of genderValues" [value]="gender">{{ 'authtestApp.Gender.' + gender | translate }}</option>
           </select>
+          <input
+            type="text"
+            class="form-control"
+            name="gender"
+            formControlName="gender"
+            id="field_gender"
+            data-cy="gender"
+            [readonly]="true"
+            *jhiHasAnyAuthority="'ROLE_USER'"
+          />
         </div>
 
         <div class="row mb-3">
           <label class="form-label" jhiTranslate="authtestApp.student.major" for="field_major">Major</label>
-          <input type="text" class="form-control" name="major" id="field_major" data-cy="major" formControlName="major" />
+          <input
+            type="text"
+            class="form-control"
+            name="major"
+            id="field_major"
+            data-cy="major"
+            formControlName="major"
+            *jhiHasAnyAuthority="'ROLE_ADMIN'"
+          />
+          <input
+            type="text"
+            class="form-control"
+            name="major"
+            id="field_major"
+            data-cy="major"
+            formControlName="major"
+            [readonly]="true"
+            *jhiHasAnyAuthority="'ROLE_USER'"
+          />
         </div>
 
         <div class="row mb-3">
           <label class="form-label" jhiTranslate="authtestApp.student.year" for="field_year">Year</label>
-          <input type="number" class="form-control" name="year" id="field_year" data-cy="year" formControlName="year" />
+          <input
+            type="number"
+            class="form-control"
+            name="year"
+            id="field_year"
+            data-cy="year"
+            formControlName="year"
+            *jhiHasAnyAuthority="'ROLE_ADMIN'"
+          />
+          <input
+            type="number"
+            class="form-control"
+            name="year"
+            id="field_year"
+            data-cy="year"
+            formControlName="year"
+            [readonly]="true"
+            *jhiHasAnyAuthority="'ROLE_USER'"
+          />
         </div>
 
         <div class="row mb-3">
@@ -108,6 +215,17 @@
             id="field_nationality"
             data-cy="nationality"
             formControlName="nationality"
+            *jhiHasAnyAuthority="'ROLE_ADMIN'"
+          />
+          <input
+            type="text"
+            class="form-control"
+            name="nationality"
+            id="field_nationality"
+            data-cy="nationality"
+            formControlName="nationality"
+            *jhiHasAnyAuthority="'ROLE_USER'"
+            [readonly]="true"
           />
         </div>
 

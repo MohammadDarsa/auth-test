@@ -9,7 +9,7 @@ export interface ITranscript {
   type?: string | null;
   comment?: string | null;
   date?: dayjs.Dayjs | null;
-  student?: Pick<IStudent, 'id'> | null;
+  student?: IStudent | null;
 }
 
 export type NewTranscript = Omit<ITranscript, 'id'> & { id: null };

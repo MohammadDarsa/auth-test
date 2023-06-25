@@ -15,7 +15,5 @@ public interface TranscriptMapper extends EntityMapper<TranscriptDTO, Transcript
     TranscriptDTO toDto(Transcript s);
 
     @Named("studentId")
-    @BeanMapping(ignoreByDefault = true)
-    @Mapping(target = "id", source = "id")
     StudentDTO toDtoStudentId(Student student);
 }

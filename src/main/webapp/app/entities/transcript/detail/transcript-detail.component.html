@@ -41,7 +41,7 @@
         <dt><span jhiTranslate="authtestApp.transcript.student">Student</span></dt>
         <dd>
           <div *ngIf="transcript.student">
-            <a [routerLink]="['/student', transcript.student.id, 'view']">{{ transcript.student.id }}</a>
+            <a [routerLink]="['/student', transcript.student.id, 'view']">{{ transcript.student.name }}</a>
           </div>
         </dd>
       </dl>
@@ -50,7 +50,12 @@
         <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
       </button>
 
-      <button type="button" [routerLink]="['/transcript', transcript.id, 'edit']" class="btn btn-primary">
+      <button
+        type="button"
+        [routerLink]="['/transcript', transcript.id, 'edit']"
+        class="btn btn-primary"
+        *jhiHasAnyAuthority="'ROLE_ADMIN'"
+      >
         <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
       </button>
     </div>
