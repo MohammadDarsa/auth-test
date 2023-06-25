@@ -16,6 +16,7 @@ export type EntityArrayResponseType = HttpResponse<IStudent[]>;
 export class StudentService {
   protected resourceUrl = this.applicationConfigService.getEndpointFor('api/students');
   protected resourceUrlStudent = this.applicationConfigService.getEndpointFor('api/student');
+  protected resourceUrlExcel = this.applicationConfigService.getEndpointFor('api/students/import');
 
   constructor(protected http: HttpClient, protected applicationConfigService: ApplicationConfigService) {}
 
@@ -37,6 +38,12 @@ export class StudentService {
 
   getAuthenticatedStudent(): Observable<EntityResponseType> {
     return this.http.get<IStudent>(`${this.resourceUrlStudent}`, { observe: 'response' });
+  }
+  bulkAddStudents(file: any): Observable<any> {
+    const formData: FormData = new FormData();
+
+    formData.append('file', file);
+    return this.http.post(`${this.resourceUrlExcel}`, formData, { observe: 'response' });
   }
 
   query(req?: any): Observable<EntityArrayResponseType> {

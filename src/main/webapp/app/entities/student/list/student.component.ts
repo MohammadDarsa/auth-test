@@ -33,6 +33,22 @@ export class StudentComponent implements OnInit {
   ngOnInit(): void {
     this.load();
   }
+  file: any = '';
+
+  onFileChange(event: any) {
+    this.file = event.target.files[0];
+  }
+  uploadFile() {
+    debugger;
+    this.studentService.bulkAddStudents(this.file).subscribe(
+      student => {
+        console.log('complete');
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
 
   delete(student: IStudent): void {
     const modalRef = this.modalService.open(StudentDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
