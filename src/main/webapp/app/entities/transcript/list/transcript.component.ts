@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Data, ParamMap, Router } from '@angular/router';
 import { combineLatest, filter, Observable, switchMap, tap } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-
+import { AccountService } from 'app/core/auth/account.service';
 import { ITranscript } from '../transcript.model';
 import { ASC, DESC, SORT, ITEM_DELETED_EVENT, DEFAULT_SORT_DATA } from 'app/config/navigation.constants';
 import { EntityArrayResponseType, TranscriptService } from '../service/transcript.service';
@@ -25,13 +25,28 @@ export class TranscriptComponent implements OnInit {
     protected activatedRoute: ActivatedRoute,
     public router: Router,
     protected sortService: SortService,
-    protected modalService: NgbModal
+    protected modalService: NgbModal,
+    protected accountService: AccountService
   ) {}
 
   trackId = (_index: number, item: ITranscript): number => this.transcriptService.getTranscriptIdentifier(item);
 
   ngOnInit(): void {
-    this.load();
+    this.refresh();
+  }
+  refresh() {
+    if (this.accountService.hasAnyAuthority('ROLE_ADMIN')) {
+      this.load();
+    } else {
+      this.transcriptService.getTransForStudent().subscribe(
+        res => {
+          this.onResponseSuccess(res);
+        },
+        err => {
+          console.log(err);
+        }
+      );
+    }
   }
 
   delete(transcript: ITranscript): void {

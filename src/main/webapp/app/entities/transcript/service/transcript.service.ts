@@ -28,6 +28,7 @@ export type EntityArrayResponseType = HttpResponse<ITranscript[]>;
 @Injectable({ providedIn: 'root' })
 export class TranscriptService {
   protected resourceUrl = this.applicationConfigService.getEndpointFor('api/transcripts');
+  protected resourceUrlStudent = this.applicationConfigService.getEndpointFor('api/transcripts/student');
 
   constructor(protected http: HttpClient, protected applicationConfigService: ApplicationConfigService) {}
 
@@ -64,7 +65,9 @@ export class TranscriptService {
       .get<RestTranscript[]>(this.resourceUrl, { params: options, observe: 'response' })
       .pipe(map(res => this.convertResponseArrayFromServer(res)));
   }
-
+  public getTransForStudent(): Observable<EntityArrayResponseType> {
+    return this.http.get<ITranscript[]>(`${this.resourceUrlStudent}`, { observe: 'response' });
+  }
   delete(id: number): Observable<HttpResponse<{}>> {
     return this.http.delete(`${this.resourceUrl}/${id}`, { observe: 'response' });
   }

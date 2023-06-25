@@ -39,7 +39,6 @@ export class StudentComponent implements OnInit {
     this.file = event.target.files[0];
   }
   uploadFile() {
-    debugger;
     this.studentService.bulkAddStudents(this.file).subscribe(
       student => {
         console.log('complete');
