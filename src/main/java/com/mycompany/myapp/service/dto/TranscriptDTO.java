@@ -18,6 +18,8 @@ public class TranscriptDTO implements Serializable {
 
     private String status;
 
+    private String type;
+
     private String comment;
 
     private LocalDate date;
@@ -113,5 +115,14 @@ public class TranscriptDTO implements Serializable {
             ", date='" + getDate() + "'" +
             ", student=" + getStudent() +
             "}";
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public TranscriptDTO setType(String type) {
+        this.type = type;
+        return this;
     }
 }

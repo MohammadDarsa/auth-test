@@ -21,6 +21,7 @@ type TranscriptFormGroupContent = {
   language: FormControl<ITranscript['language']>;
   year: FormControl<ITranscript['year']>;
   status: FormControl<ITranscript['status']>;
+  type: FormControl<ITranscript['type']>;
   comment: FormControl<ITranscript['comment']>;
   date: FormControl<ITranscript['date']>;
   student: FormControl<ITranscript['student']>;
@@ -46,6 +47,7 @@ export class TranscriptFormService {
       language: new FormControl(transcriptRawValue.language),
       year: new FormControl(transcriptRawValue.year),
       status: new FormControl(transcriptRawValue.status),
+      type: new FormControl(transcriptRawValue.type),
       comment: new FormControl(transcriptRawValue.comment),
       date: new FormControl(transcriptRawValue.date),
       student: new FormControl(transcriptRawValue.student),

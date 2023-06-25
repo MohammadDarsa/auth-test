@@ -2,8 +2,10 @@ package com.mycompany.myapp.service;
 
 import com.mycompany.myapp.domain.Transcript;
 import com.mycompany.myapp.repository.TranscriptRepository;
+import com.mycompany.myapp.service.dto.StudentDTO;
 import com.mycompany.myapp.service.dto.TranscriptDTO;
 import com.mycompany.myapp.service.mapper.TranscriptMapper;
+import com.mycompany.myapp.web.rest.dto.response.StudentTranscriptsResponse;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -26,9 +28,12 @@ public class TranscriptService {
 
     private final TranscriptMapper transcriptMapper;
 
-    public TranscriptService(TranscriptRepository transcriptRepository, TranscriptMapper transcriptMapper) {
+    private final StudentService studentService;
+
+    public TranscriptService(TranscriptRepository transcriptRepository, TranscriptMapper transcriptMapper, StudentService studentService) {
         this.transcriptRepository = transcriptRepository;
         this.transcriptMapper = transcriptMapper;
+        this.studentService = studentService;
     }
 
     /**
@@ -108,5 +113,15 @@ public class TranscriptService {
     public void delete(Long id) {
         log.debug("Request to delete Transcript : {}", id);
         transcriptRepository.deleteById(id);
+    }
+
+    public StudentTranscriptsResponse getStudentTranscripts() {
+        StudentDTO student = studentService.findLoggedInStudent().orElseThrow(() -> new RuntimeException("Student not found"));
+        List<TranscriptDTO> transcripts = transcriptRepository
+            .findByStudent_Id(student.getId())
+            .stream()
+            .map(transcriptMapper::toDto)
+            .collect(Collectors.toList());
+        return new StudentTranscriptsResponse(transcripts);
     }
 }

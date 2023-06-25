@@ -33,6 +33,9 @@ public class Transcript implements Serializable {
     @Column(name = "status")
     private String status;
 
+    @Column(name = "type")
+    private String type;
+
     @Column(name = "comment")
     private String comment;
 
@@ -166,5 +169,14 @@ public class Transcript implements Serializable {
             ", comment='" + getComment() + "'" +
             ", date='" + getDate() + "'" +
             "}";
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public Transcript setType(String type) {
+        this.type = type;
+        return this;
     }
 }

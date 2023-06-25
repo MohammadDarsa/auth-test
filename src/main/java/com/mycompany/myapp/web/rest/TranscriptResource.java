@@ -3,6 +3,7 @@ package com.mycompany.myapp.web.rest;
 import com.mycompany.myapp.repository.TranscriptRepository;
 import com.mycompany.myapp.service.TranscriptService;
 import com.mycompany.myapp.service.dto.TranscriptDTO;
+import com.mycompany.myapp.web.rest.dto.response.StudentTranscriptsResponse;
 import com.mycompany.myapp.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -168,5 +169,17 @@ public class TranscriptResource {
             .noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
             .build();
+    }
+
+    /**
+     * {@code GET  /transcripts/student}
+     *
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the transcriptDTO, or with status {@code 404 (Not Found)}.
+     */
+    @GetMapping("/transcripts/student")
+    public ResponseEntity<StudentTranscriptsResponse> getStudentTranscripts() {
+        log.debug("REST request to get Transcript of authenticated student");
+        StudentTranscriptsResponse studentTranscriptsResponse = transcriptService.getStudentTranscripts();
+        return ResponseEntity.ok(studentTranscriptsResponse);
     }
 }

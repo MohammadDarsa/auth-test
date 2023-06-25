@@ -11,6 +11,7 @@ export const sampleWithPartialData: ITranscript = {
   language: 'Virginia',
   year: 48958,
   status: 'mindshare',
+  type: 'Account Sweden group',
   date: dayjs('2023-06-03'),
 };
 
@@ -19,6 +20,7 @@ export const sampleWithFullData: ITranscript = {
   language: 'compressing disintermediate',
   year: 58067,
   status: 'Account Sweden group',
+  type: 'Account Sweden group',
   comment: 'Islands, generate didactic',
   date: dayjs('2023-06-02'),
 };

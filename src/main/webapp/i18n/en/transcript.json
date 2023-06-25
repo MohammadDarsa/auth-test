@@ -21,6 +21,7 @@
       "language": "Language",
       "year": "Year",
       "status": "Status",
+      "type": "Type",
       "comment": "Comment",
       "date": "Date",
       "student": "Student"

@@ -6,6 +6,7 @@ export interface ITranscript {
   language?: string | null;
   year?: number | null;
   status?: string | null;
+  type?: string | null;
   comment?: string | null;
   date?: dayjs.Dayjs | null;
   student?: Pick<IStudent, 'id'> | null;
