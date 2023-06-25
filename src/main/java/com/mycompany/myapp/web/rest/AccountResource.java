@@ -1,5 +1,6 @@
 package com.mycompany.myapp.web.rest;
 
+import com.mycompany.myapp.service.StudentService;
 import com.mycompany.myapp.service.UserService;
 import com.mycompany.myapp.service.dto.AdminUserDTO;
 import java.security.Principal;
@@ -31,8 +32,11 @@ public class AccountResource {
 
     private final UserService userService;
 
-    public AccountResource(UserService userService) {
+    //    private final StudentService studentService;
+
+    public AccountResource(UserService userService, StudentService studentService) {
         this.userService = userService;
+        //        this.studentService = studentService;
     }
 
     /**

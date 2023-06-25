@@ -15,6 +15,7 @@ export type EntityArrayResponseType = HttpResponse<IStudent[]>;
 @Injectable({ providedIn: 'root' })
 export class StudentService {
   protected resourceUrl = this.applicationConfigService.getEndpointFor('api/students');
+  protected resourceUrlStudent = this.applicationConfigService.getEndpointFor('api/student');
 
   constructor(protected http: HttpClient, protected applicationConfigService: ApplicationConfigService) {}
 
@@ -32,6 +33,10 @@ export class StudentService {
 
   find(id: number): Observable<EntityResponseType> {
     return this.http.get<IStudent>(`${this.resourceUrl}/${id}`, { observe: 'response' });
+  }
+
+  getAuthenticatedStudent(): Observable<EntityResponseType> {
+    return this.http.get<IStudent>(`${this.resourceUrlStudent}`, { observe: 'response' });
   }
 
   query(req?: any): Observable<EntityArrayResponseType> {
