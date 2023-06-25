@@ -32,11 +32,11 @@ public class AccountResource {
 
     private final UserService userService;
 
-    private final StudentService studentService;
+    //    private final StudentService studentService;
 
     public AccountResource(UserService userService, StudentService studentService) {
         this.userService = userService;
-        this.studentService = studentService;
+        //        this.studentService = studentService;
     }
 
     /**
@@ -49,7 +49,7 @@ public class AccountResource {
     @GetMapping("/account")
     @SuppressWarnings("unchecked")
     public AdminUserDTO getAccount(Principal principal) {
-        if (principal instanceof AbstractAuthenticationToken && studentService.findLoggedInStudent().isPresent()) {
+        if (principal instanceof AbstractAuthenticationToken) {
             return userService.getUserFromAuthentication((AbstractAuthenticationToken) principal);
         } else {
             throw new AccountResourceException("User could not be found");
