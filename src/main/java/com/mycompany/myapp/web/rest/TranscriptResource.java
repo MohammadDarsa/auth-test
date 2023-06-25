@@ -177,9 +177,9 @@ public class TranscriptResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the transcriptDTO, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/transcripts/student")
-    public ResponseEntity<StudentTranscriptsResponse> getStudentTranscripts() {
+    public List<TranscriptDTO> getStudentTranscripts() {
         log.debug("REST request to get Transcript of authenticated student");
         StudentTranscriptsResponse studentTranscriptsResponse = transcriptService.getStudentTranscripts();
-        return ResponseEntity.ok(studentTranscriptsResponse);
+        return studentTranscriptsResponse.getTranscripts();
     }
 }

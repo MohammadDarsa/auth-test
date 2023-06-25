@@ -66,7 +66,9 @@ export class TranscriptService {
       .pipe(map(res => this.convertResponseArrayFromServer(res)));
   }
   public getTransForStudent(): Observable<EntityArrayResponseType> {
-    return this.http.get<ITranscript[]>(`${this.resourceUrlStudent}`, { observe: 'response' });
+    return this.http
+      .get<RestTranscript[]>(`${this.resourceUrlStudent}`, { observe: 'response' })
+      .pipe(map(res => this.convertResponseArrayFromServer(res)));
   }
   delete(id: number): Observable<HttpResponse<{}>> {
     return this.http.delete(`${this.resourceUrl}/${id}`, { observe: 'response' });
