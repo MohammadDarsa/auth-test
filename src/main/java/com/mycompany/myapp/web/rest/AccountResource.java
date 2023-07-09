@@ -4,6 +4,7 @@ import com.mycompany.myapp.service.StudentService;
 import com.mycompany.myapp.service.UserService;
 import com.mycompany.myapp.service.dto.AdminUserDTO;
 import java.security.Principal;
+import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -50,7 +51,14 @@ public class AccountResource {
     @SuppressWarnings("unchecked")
     public AdminUserDTO getAccount(Principal principal) {
         if (principal instanceof AbstractAuthenticationToken) {
-            return userService.getUserFromAuthentication((AbstractAuthenticationToken) principal);
+            AdminUserDTO user = userService.getUserFromAuthentication((AbstractAuthenticationToken) principal);
+            Set<String> authorities = user.getAuthorities();
+            if (authorities.contains("ROLE_ADMIN")) {
+                user.setAuthorities(Set.of("ROLE_ADMIN"));
+            } else if (authorities.contains("ROLE_CLERIC")) {
+                user.setAuthorities(Set.of("ROLE_CLERIC"));
+            }
+            return user;
         } else {
             throw new AccountResourceException("User could not be found");
         }

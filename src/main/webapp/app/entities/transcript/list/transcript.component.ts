@@ -35,7 +35,7 @@ export class TranscriptComponent implements OnInit {
     this.refresh();
   }
   refresh() {
-    if (this.accountService.hasAnyAuthority('ROLE_ADMIN')) {
+    if (this.accountService.hasAnyAuthority('ROLE_ADMIN') || this.accountService.hasAnyAuthority('ROLE_CLERIC')) {
       this.load();
     } else {
       this.transcriptService.getTransForStudent().subscribe(

@@ -54,7 +54,7 @@
         type="button"
         [routerLink]="['/transcript', transcript.id, 'edit']"
         class="btn btn-primary"
-        *jhiHasAnyAuthority="'ROLE_ADMIN'"
+        *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_CLERIC']"
       >
         <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
       </button>

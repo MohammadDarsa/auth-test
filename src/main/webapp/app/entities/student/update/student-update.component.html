@@ -8,7 +8,7 @@
       <div>
         <jhi-alert-error></jhi-alert-error>
 
-        <div class="row mb-3" *jhiHasAnyAuthority="'ROLE_ADMIN'">
+        <div class="row mb-3" *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_CLERIC']">
           <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
           <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
         </div>
@@ -22,7 +22,7 @@
             id="field_studentId"
             data-cy="studentId"
             formControlName="studentId"
-            *jhiHasAnyAuthority="'ROLE_ADMIN'"
+            *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_CLERIC']"
           />
           <input
             type="number"
@@ -45,7 +45,7 @@
             id="field_email"
             data-cy="email"
             formControlName="email"
-            *jhiHasAnyAuthority="'ROLE_ADMIN'"
+            *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_CLERIC']"
           />
           <input
             type="text"
@@ -68,7 +68,7 @@
             id="field_name"
             data-cy="name"
             formControlName="name"
-            *jhiHasAnyAuthority="'ROLE_ADMIN'"
+            *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_CLERIC']"
           />
           <input
             type="text"
@@ -90,7 +90,7 @@
             formControlName="gender"
             id="field_gender"
             data-cy="gender"
-            *jhiHasAnyAuthority="'ROLE_ADMIN'"
+            *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_CLERIC']"
           >
             <option [ngValue]="null">{{ 'authtestApp.Gender.null' | translate }}</option>
             <option *ngFor="let gender of genderValues" [value]="gender">{{ 'authtestApp.Gender.' + gender | translate }}</option>
@@ -116,7 +116,7 @@
             id="field_major"
             data-cy="major"
             formControlName="major"
-            *jhiHasAnyAuthority="'ROLE_ADMIN'"
+            *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_CLERIC']"
           />
           <input
             type="text"
@@ -139,7 +139,7 @@
             id="field_year"
             data-cy="year"
             formControlName="year"
-            *jhiHasAnyAuthority="'ROLE_ADMIN'"
+            *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_CLERIC']"
           />
           <input
             type="number"
@@ -215,7 +215,7 @@
             id="field_nationality"
             data-cy="nationality"
             formControlName="nationality"
-            *jhiHasAnyAuthority="'ROLE_ADMIN'"
+            *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_CLERIC']"
           />
           <input
             type="text"

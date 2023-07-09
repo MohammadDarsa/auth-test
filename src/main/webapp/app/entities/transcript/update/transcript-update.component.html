@@ -55,7 +55,7 @@
           </div>
         </div>
 
-        <div class="row mb-3" *jhiHasAnyAuthority="'ROLE_ADMIN'">
+        <div class="row mb-3" *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_CLERIC']">
           <label class="form-label" jhiTranslate="authtestApp.transcript.student" for="field_student">Student</label>
           <select
             class="form-control"
@@ -66,7 +66,7 @@
             [compareWith]="compareStudent"
           >
             <option [ngValue]="null"></option>
-            <option [ngValue]="studentOption" *ngFor="let studentOption of studentsSharedCollection">{{ studentOption.id }}</option>
+            <option [ngValue]="studentOption" *ngFor="let studentOption of studentsSharedCollection">{{ studentOption.name }}</option>
           </select>
         </div>
         <input

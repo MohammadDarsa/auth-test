@@ -1,5 +1,6 @@
 package com.mycompany.myapp.web.rest;
 
+import com.mycompany.myapp.domain.Transcript;
 import com.mycompany.myapp.repository.TranscriptRepository;
 import com.mycompany.myapp.service.TranscriptService;
 import com.mycompany.myapp.service.dto.TranscriptDTO;
@@ -10,6 +11,7 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;

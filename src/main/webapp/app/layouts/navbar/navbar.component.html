@@ -41,7 +41,7 @@
             </span>
           </a>
           <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
-            <li *jhiHasAnyAuthority="'ROLE_ADMIN'">
+            <li *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_CLERIC']">
               <a
                 class="dropdown-item"
                 routerLink="student"
@@ -81,7 +81,7 @@
           </ul>
         </li>
         <li
-          *jhiHasAnyAuthority="'ROLE_ADMIN'"
+          *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_CLERIC']"
           ngbDropdown
           class="nav-item dropdown pointer"
           display="dynamic"

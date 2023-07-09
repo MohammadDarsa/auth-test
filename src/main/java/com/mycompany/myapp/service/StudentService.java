@@ -1,5 +1,6 @@
 package com.mycompany.myapp.service;
 
+import com.mycompany.myapp.domain.Authority;
 import com.mycompany.myapp.domain.Student;
 import com.mycompany.myapp.domain.User;
 import com.mycompany.myapp.repository.StudentRepository;
@@ -129,6 +130,12 @@ public class StudentService {
     //get current logged in student
     public Optional<StudentDTO> findLoggedInStudent() {
         User user = userService.getCurrentUser().orElseThrow(() -> new RuntimeException("User not logged in"));
+        Optional<Authority> authority = user
+            .getAuthorities()
+            .stream()
+            .filter(a -> a.getName().equals("ROLE_ADMIN") || a.getName().equals("ROLE_CLERIC"))
+            .findFirst();
+        if (authority.isPresent()) return Optional.of(new StudentDTO());
         return findByUserEmail(user.getEmail()).map(studentMapper::toDto);
     }
 
