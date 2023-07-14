@@ -18,6 +18,7 @@ const studentRoute: Routes = [
     },
     canActivate: [UserRouteAccessService],
   },
+  //   { path: '',   redirectTo: '/transcript', pathMatch: 'full' },
   {
     path: ':id/view',
     component: StudentDetailComponent,

@@ -22,16 +22,33 @@
           <label class="form-label" jhiTranslate="authtestApp.transcript.year" for="field_year">Year</label>
           <input type="number" class="form-control" name="year" id="field_year" data-cy="year" formControlName="year" />
         </div>
-
         <div class="row mb-3">
-          <label class="form-label" jhiTranslate="authtestApp.transcript.status" for="field_status">Status</label>
-          <input type="text" class="form-control" name="status" id="field_status" data-cy="status" formControlName="status" />
+          <label class="form-label" jhiTranslate="authtestApp.transcript.status" for="field_type">Gender</label>
+          <select
+            class="form-control"
+            name="status"
+            formControlName="status"
+            *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_CLERIC', 'ROLE_USER']"
+          >
+            <option value="pending">Pending</option>
+            <option value="in progress">In Progress</option>
+            <option value="done">Done</option>
+            <option value="rejected">Rejected</option>
+          </select>
         </div>
 
         <div class="row mb-3">
-          <label class="form-label" jhiTranslate="authtestApp.transcript.type" for="field_type">Type</label>
-          <input type="text" class="form-control" name="type" id="field_type" data-cy="type" formControlName="type" />
+          <label class="form-label" jhiTranslate="authtestApp.transcript.type" for="field_type">Gender</label>
+          <select class="form-control" name="type" formControlName="type" *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_CLERIC', 'ROLE_USER']">
+            <option value="افادة علامات">افادة علامات</option>
+            <option value="افادة انهاء">افادة انهاء</option>
+          </select>
         </div>
+
+        <!--        <div class="row mb-3">-->
+        <!--          <label class="form-label" jhiTranslate="authtestApp.transcript.type" for="field_type">Type</label>-->
+        <!--          <input type="text" class="form-control" name="type" id="field_type" data-cy="type" formControlName="type" />-->
+        <!--        </div>-->
 
         <div class="row mb-3">
           <label class="form-label" jhiTranslate="authtestApp.transcript.comment" for="field_comment">Comment</label>
