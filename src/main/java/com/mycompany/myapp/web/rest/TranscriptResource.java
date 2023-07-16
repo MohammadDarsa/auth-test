@@ -56,6 +56,7 @@ public class TranscriptResource {
         if (transcriptDTO.getId() != null) {
             throw new BadRequestAlertException("A new transcript cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        transcriptDTO.setStatus("pending");
         TranscriptDTO result = transcriptService.save(transcriptDTO);
         return ResponseEntity
             .created(new URI("/api/transcripts/" + result.getId()))
