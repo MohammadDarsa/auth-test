@@ -6,17 +6,15 @@
       <div class="row">
         <div class="col-6">
           <div class="card mt-2">
-            <div class="card-body">
+            <div class="card-body bg-light">
               <form enctype="multipart/form-data">
-                <div class="form-group">
-                  <label for="fileInput" class="d-block">Bulk Add Students:</label>
-                  <br />
+                <p style="font-size: 25px">Bulk Add Students:</p>
 
-                  <input type="file" class="form-control-file" id="fileInput" (change)="onFileChange($event)" />
-                </div>
-                <div class="text-left">
-                  <button type="button" class="btn btn-primary" (click)="uploadFile()" [disabled]="!file">Upload</button>
-                </div>
+                <input type="file" id="fileInput" style="font-size: 20px" (change)="onFileChange($event)" />
+                <button class="btn btn-primary jh-create-entity" (click)="uploadFile()" [disabled]="!file">
+                  <fa-icon icon="plus"></fa-icon>
+                  <span>Upload</span>
+                </button>
                 <a class="btn btn-secondary" href="https://sample-excel-lu.s3.amazonaws.com/ListStudents.xlsx" download>Download Sample</a>
               </form>
             </div>
