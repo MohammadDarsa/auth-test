@@ -30,7 +30,7 @@
   "sslRequired": "none",
   "registrationAllowed": false,
   "registrationEmailAsUsername": false,
-  "rememberMe": false,
+  "rememberMe": true,
   "verifyEmail": false,
   "loginWithEmailAllowed": true,
   "duplicateEmailsAllowed": false,
@@ -81,9 +81,9 @@
         "clientRole": false,
         "containerId": "jhipster",
         "attributes": {
+          "name": ["name"],
           "lastName": ["lastName"],
           "firstName": ["firstName"],
-          "name": ["name"],
           "email": ["email"]
         }
       },
@@ -1478,6 +1478,10 @@
     "strictTransportSecurity": "max-age=31536000; includeSubDomains"
   },
   "smtpServer": {},
+  "loginTheme": "lu2",
+  "accountTheme": "lu2",
+  "adminTheme": "lu2",
+  "emailTheme": "lu2",
   "eventsEnabled": false,
   "eventsListeners": ["jboss-logging"],
   "enabledEventTypes": [],
@@ -1492,8 +1496,8 @@
       "enabled": true,
       "updateProfileFirstLoginMode": "on",
       "trustEmail": true,
-      "storeToken": false,
-      "addReadTokenRoleOnCreate": false,
+      "storeToken": true,
+      "addReadTokenRoleOnCreate": true,
       "authenticateByDefault": false,
       "linkOnly": false,
       "firstBrokerLoginFlowAlias": "student flow",
@@ -1626,14 +1630,6 @@
         "name": "Consent Required",
         "providerId": "consent-required",
         "subType": "anonymous",
-        "subComponents": {},
-        "config": {}
-      }
-    ],
-    "org.keycloak.userprofile.UserProfileProvider": [
-      {
-        "id": "9cf31492-d069-4ee0-8357-68683b98af25",
-        "providerId": "declarative-user-profile",
         "subComponents": {},
         "config": {}
       }
